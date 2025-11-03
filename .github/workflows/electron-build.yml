@@ -1,0 +1,23 @@
+name: Build Electron App for Windows
+
+on: [push]  # 每次代码推送时自动触发构建
+
+jobs:
+  build:
+    runs-on: windows-latest  # 指定Windows环境
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20  # 使用最新LTS版本
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for Windows
+        run: npm run build-win  # 执行打包脚本
+        env:
+          ELECTRON_BUILDER_EXTRA_ARGS: "--win --x64 --noasar"  # 传递额外参数
