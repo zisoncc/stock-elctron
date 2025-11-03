@@ -22,7 +22,8 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     },
     title: '股票基金行情显示软件',
-    backgroundColor: '#00000000' // 完全透明背景
+    //backgroundColor: '#00000000' // 完全透明背景
+    backgroundColor: '#ffffff' // 完全透明背景
   });
 
   // 加载应用的index.html
@@ -62,4 +63,9 @@ const { ipcMain } = require('electron');
 
 ipcMain.on('close-window', () => {
   mainWindow.close();
+});
+
+ipcMain.on('start-drag', (event, deltaX, deltaY) => {
+  const [x, y] = mainWindow.getPosition();
+  mainWindow.setPosition(x + deltaX, y + deltaY);
 });
