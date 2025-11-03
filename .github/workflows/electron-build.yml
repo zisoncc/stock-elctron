@@ -22,3 +22,10 @@ jobs:
 
         env:
           ELECTRON_BUILDER_EXTRA_ARGS: "--win --x64 --noasar"  # 传递额外参数
+
+# 新增：上传打包后的文件到 artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-windows-build  # artifacts 名称（自定义）
+          path: dist/  # 对应 electron-builder 的输出目录（默认 dist）
