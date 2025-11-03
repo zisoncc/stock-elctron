@@ -28,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-windows-build  # artifacts 名称（自定义）
-          path: dist/  # 对应 electron-builder 的输出目录（默认 dist）
+          path: release-builds/  # 对应 electron-builder 的输出目录（默认 dist）
