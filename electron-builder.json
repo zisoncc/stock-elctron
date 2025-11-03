@@ -1,0 +1,51 @@
+{
+  "appId": "com.example.stockticker",
+  "productName": "股票基金行情显示软件",
+  "version": "1.0.0",
+  "copyright": "Copyright © 2023",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "index.html",
+    "test.html",
+    "main.js",
+    "preload.js",
+    "package.json"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "build/icon.ico"
+  },
+  "mac": {
+    "target": [
+      "dmg",
+      "zip"
+    ],
+    "icon": "build/icon.icns"
+  },
+  "linux": {
+    "target": [
+      "deb",
+      "rpm",
+      "AppImage"
+    ],
+    "icon": "build/icon.png"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "build/icon.ico",
+    "uninstallerIcon": "build/icon.ico",
+    "installerHeaderIcon": "build/icon.ico",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  }
+}

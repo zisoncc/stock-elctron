@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>股票基金行情行情显示 - 测试</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f2f5;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      color: #1e40af;
+      margin-bottom: 20px;
+    }
+    
+    .test-section {
+      margin-bottom: 30px;
+    }
+    
+    .test-section h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .test-section p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .code-block {
+      background-color: #f8fafc;
+      padding: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #3b82f6;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #3b82f6;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    
+    .btn:hover {
+      background-color: #2563eb;
+    }
+    
+    .feature-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .feature-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature-list li:before {
+      content: '✓';
+      color: #10b981;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>股票基金行情显示软件 - 测试页面</h1>
+    
+    <div class="test-section">
+      <h2>功能特点</h2>
+      <ul class="feature-list">
+        <li>自定义股票列表，支持添加和删除股票</li>
+        <li>窗口支持拖拽移动，保存位置状态</li>
+        <li>鼠标悬停显示详细行情数据</li>
+        <li>右键菜单支持删除股票</li>
+        <li>自动数据自动刷新（30秒）</li>
+        <li>支持最小化窗口</li>
+        <li>详细行情包含价格走势图</li>
+      </ul>
+    </div>
+    
+    <div class="test-section">
+      <h2>使用说明</h2>
+      <p>1. 打开主程序：<a href="index.html" class="btn">启动股票行情显示</a></p>
+      <p>2. 拖拽窗口：点击标题栏顶部标题栏拖动窗口</p>
+      <p>3. 查看详情：鼠标悬停在股票项上</p>
+      <p>4. 删除股票：右键击股票项上右键点击"删除"</p>
+      <p>5. 刷新数据：点击顶部的刷新按钮</p>
+      <p>6. 最小化：点击顶部的减号按钮</p>
+    </div>
+    
+    <div class="test-section">
+      <h2>添加股票</h2>
+      <p>在浏览器控制台中执行以下代码添加股票：</p>
+      <div class="code-block">
+        addStock('sh600000'); // 添加浦发银行<br>
+        addStock('sz000001'); // 添加平安银行<br>
+        addStock('sh600519'); // 添加贵州茅台
+      </div>
+      <p>股票代码格式：沪市股票以"sh"开头，深市股票以"sz"开头</p>
+    </div>
+    
+    <div class="test-section">
+      <h2>技术实现</h2>
+      <p>本软件使用以下技术实现：</p>
+      <ul class="feature-list">
+        <li>HTML5 + CSS3 + JavaScript</li>
+        <li>Tailwind CSS 用于样式</li>
+        <li>Chart.js 用于价格图表</li>
+        <li>腾讯股票API 用于行情数据</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
