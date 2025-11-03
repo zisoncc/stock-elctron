@@ -8,21 +8,24 @@
     "package-win": "electron-packager . stock-ticker --platform=win32 --arch=x64 --out=release-builds --overwrite",
     "package-mac": "electron-packager . stock-ticker --platform=darwin --arch=x64 --out=release-builds --overwrite",
     "package-linux": "electron-packager . stock-ticker --platform=linux --arch=x64 --out=release-builds --overwrite",
-    "build": {
-      "directories": { "output": "dist" },
-      "build-win": "electron-builder --win"
-    },
-    "keywords": [
-      "股票",
-      "基金",
-      "行情",
-      "Electron"
-    ],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "electron": "^28.0.0",
-      "electron-packager": "^17.1.2"
+    "build": "electron-builder",
+    "build-win": "electron-builder --win"
+  },
+  "keywords": [
+    "股票",
+    "基金",
+    "行情",
+    "Electron"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "directories": {
+      "output": "dist"
     }
   }
 }
