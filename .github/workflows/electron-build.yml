@@ -18,7 +18,7 @@ jobs:
         run: npm install
 
       - name: Build for Windows
-        #run: npm run package-win  # 执行打包脚本
+        run: npm run package-win  # 执行打包脚本
 
         env:
           ELECTRON_BUILDER_EXTRA_ARGS: "--win --x64 --noasar"  # 传递额外参数
