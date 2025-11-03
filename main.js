@@ -7,10 +7,14 @@ let mainWindow;
 function createWindow() {
   // 创建浏览器窗口
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
-    minWidth: 800,
-    minHeight: 500,
+    width: 320,  // 更适合桌面宠物的宽度
+    height: 400, // 更适合桌面宠物的高度
+    minWidth: 320,
+    minHeight: 200,
+    frame: false, // 无边框窗口
+    transparent: true, // 透明背景
+    alwaysOnBottom: true, // 始终在底部（桌面层）
+    skipTaskbar: true, // 不在任务栏显示
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -18,8 +22,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     },
     title: '股票基金行情显示软件',
-    // 如果有图标，可以添加图标路径
-    // icon: path.join(__dirname, 'icon.png')
+    backgroundColor: '#00000000' // 完全透明背景
   });
 
   // 加载应用的index.html
@@ -29,8 +32,8 @@ function createWindow() {
     slashes: true
   }));
 
-  // 打开开发者工具
-  // mainWindow.webContents.openDevTools();
+  // 允许窗口被拖动到桌面任何位置
+  mainWindow.setIgnoreMouseEvents(false);
 
   // 窗口关闭时触发
   mainWindow.on('closed', function () {
@@ -43,18 +46,20 @@ app.on('ready', createWindow);
 
 // 当所有窗口都关闭时退出应用
 app.on('window-all-closed', function () {
-  // 在macOS上，除非用户用Cmd + Q显式退出，否则应用及其菜单栏会保持激活
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
 app.on('activate', function () {
-  // 在macOS上，当点击dock图标并且没有其他窗口打开时，通常会在应用中重新创建一个窗口
   if (mainWindow === null) {
     createWindow();
   }
 });
 
-// 可以在这个文件中续写应用剩下主进程代码
-// 也可以拆分成几个文件，然后用require导入
+// 在main.js中添加
+const { ipcMain } = require('electron');
+
+ipcMain.on('close-window', () => {
+  mainWindow.close();
+});

@@ -78,33 +78,46 @@
       background-color: #f1f5f9;
       overflow: hidden;
     }
-    
+
     #stockWindow {
-      position: absolute;
-      width: 320px;
-      border-radius: 8px;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      background-color: white;
-      overflow: hidden;
-      z-index: 1000;
-      user-select: none;
+        position: absolute;
+        width: 320px;
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        background-color: rgba(255, 255, 255, 0.9); /* 轻微透明背景 */
+        overflow: hidden;
+        z-index: 1; /* 确保在桌面之上，但在其他应用之下 */
+        user-select: none;
     }
-    
+
     #windowHeader {
-      background-color: #1e40af;
-      color: white;
-      padding: 8px 16px;
-      cursor: move;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+        background-color: rgba(30, 64, 175, 0.8); /* 半透明标题栏 */
+        color: white;
+        padding: 8px 16px;
+        cursor: move;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 8px 8px 0 0;
     }
-    
+
+    /* 添加一个关闭按钮样式 */
+    #closeBtn {
+        color: white;
+        cursor: pointer;
+        padding: 2px 5px;
+    }
+
+    #closeBtn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+    }
+
     #stockList {
       max-height: 400px;
       overflow-y: auto;
     }
-    
+
     .stock-item {
       padding: 10px 16px;
       border-bottom: 1px solid #e2e8f0;
@@ -268,15 +281,18 @@
     <div id="windowHeader">
       <div>股票基金行情</div>
       <div class="header-controls">
-        <div class="control-btn" id="refreshBtn" title="刷新数据">
-          <i class="fa fa-refresh" aria-hidden="true"></i>
-        </div>
-        <div class="control-btn" id="addBtn" title="添加股票">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </div>
-        <div class="control-btn" id="minimizeBtn" title="最小化">
-          <i class="fa fa-minus" aria-hidden="true"></i>
-        </div>
+          <div class="control-btn" id="refreshBtn" title="刷新数据">
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+          </div>
+          <div class="control-btn" id="addBtn" title="添加股票">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <div class="control-btn" id="minimizeBtn" title="最小化">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+          </div>
+          <div class="control-btn" id="closeBtn" title="关闭">
+              <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
       </div>
     </div>
     <div id="addStockPanel" class="p-3 bg-gray-50 border-b border-gray-200 hidden">
@@ -513,6 +529,14 @@
       const stockCodeInput = document.getElementById('stockCodeInput');
       const confirmAddBtn = document.getElementById('confirmAddBtn');
       const addStockMessage = document.getElementById('addStockMessage');
+      const closeBtn = document.getElementById('closeBtn');
+
+      // 关闭按钮
+      closeBtn.addEventListener('click', () => {
+          // 通过Electron API关闭窗口
+          window.electronAPI.closeWindow();
+      });
+
       
       // 刷新按钮
       refreshBtn.addEventListener('click', () => {

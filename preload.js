@@ -11,3 +11,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 // 如果需要使用Node.js API，可以在这里添加
 // 但要注意安全问题，避免暴露敏感API
+
+
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  closeWindow: () => ipcRenderer.send('close-window')
+});
